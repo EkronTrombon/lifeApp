@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fireAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
@@ -44,6 +46,7 @@ export class AppComponent {
 
   logOut() {
     this.fireAuth.auth.signOut().then(resp => {
+      this.storage.clear();
       this.router.navigateByUrl('/login');
     });
   }
