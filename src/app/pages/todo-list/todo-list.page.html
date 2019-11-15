@@ -1,0 +1,38 @@
+<app-header title="TODO List"></app-header>
+
+<ion-content>
+    <ion-list lines="none">
+        <ion-item-sliding *ngFor="let todo of myTodos">
+            <ion-item>
+                <ion-label>{{ todo.todo }}</ion-label>
+                <ion-checkbox color="primary" slot="start" [checked]="todo.done" (ionChange)="checkTodo($event, todo)"></ion-checkbox>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="deleteTodo(todo)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <ion-row *ngIf="showTodo">
+        <ion-col size="10">
+            <ion-label color="primary" position="floating">Add TODO</ion-label>
+            <ion-input type="text" name="newTodoText" [(ngModel)]="newTodo.todo"></ion-input>
+        </ion-col>
+        <ion-col size="2">
+            <ion-button shape="round" fill="outline" color="tertiary" (click)="saveNewTodo()">
+                <ion-icon color="success" slot="icon-only" name="checkmark"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-button color="secondary" size="large" expand="block" (click)="showTodo = !showTodo">
+            <ion-label color="primary"><strong>Add TODO</strong></ion-label>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

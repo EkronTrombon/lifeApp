@@ -20,9 +20,14 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'TODO List',
+      url: '/todo-list',
+      icon: 'checkbox-outline'
+    },
+    {
+      title: 'Shopping List',
+      url: '/shopping-list',
+      icon: 'cart'
     }
   ];
 

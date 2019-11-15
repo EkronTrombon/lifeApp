@@ -6,3 +6,9 @@ export interface User {
     lastName?: string;
     img?: string;
 }
+
+export interface Todo {
+    id?: string;
+    todo?: string;
+    done?: boolean;
+}
