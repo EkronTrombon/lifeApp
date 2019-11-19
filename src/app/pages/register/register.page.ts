@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { UiService } from 'src/app/services/ui.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -16,13 +17,22 @@ export class RegisterPage implements OnInit {
     userName: '',
     email: '',
     password: ''
-  }
+  };
 
   constructor(private fireAuth: AngularFireAuth,
               private router: Router,
-              private uiService: UiService) { }
+              private uiService: UiService,
+              private menuCtrl: MenuController) { }
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   register(fRegister: NgForm) {
     if (fRegister.valid) {
@@ -42,6 +52,7 @@ export class RegisterPage implements OnInit {
       if (user) {
         console.log(user);
         user.updateProfile({ displayName: this.user.userName, photoURL: this.user.img }).then(() => {
+          this.menuCtrl.enable(true);
           this.uiService.presentToast('User created successfully');
           this.router.navigateByUrl('/home');
         });

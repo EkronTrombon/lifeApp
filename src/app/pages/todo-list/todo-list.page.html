@@ -19,10 +19,10 @@
     <ion-row *ngIf="showTodo">
         <ion-col size="10">
             <ion-label color="primary" position="floating">Add TODO</ion-label>
-            <ion-input type="text" name="newTodoText" [(ngModel)]="newTodo.todo"></ion-input>
+            <ion-input type="text" placeholder="Write your TODO here..." name="newTodoText" [(ngModel)]="newTodo.todo" required></ion-input>
         </ion-col>
         <ion-col size="2">
-            <ion-button shape="round" fill="outline" color="tertiary" (click)="saveNewTodo()">
+            <ion-button shape="round" fill="outline" color="tertiary" [disabled]="newTodo.todo === ''" (click)="saveNewTodo()">
                 <ion-icon color="success" slot="icon-only" name="checkmark"></ion-icon>
             </ion-button>
         </ion-col>

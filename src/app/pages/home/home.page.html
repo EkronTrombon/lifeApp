@@ -5,11 +5,13 @@
     <ion-grid>
         <ion-row>
             <ion-col size="4" class="poster-detalle-sobre">
-                <ion-card class="playerImg">
-                    <img [src]="user.img" class="userImg" *ngIf="user.img">
+                <ion-card class="userImg">
+                    <!-- <img [src]="user.img" class="userImg" *ngIf="user.img"> -->
+                    <img src="https://firebasestorage.googleapis.com/v0/b/lifeapp-17fb3.appspot.com/o/users%2FnoUser.png?alt=media&token=99d38298-ea02-4db4-a57f-7d2549ca0e39">
                 </ion-card>
             </ion-col>
             <ion-col size="8">
+                <h1 class="ion-text-center welcomeText">Welcome {{ user.userName }}</h1>
                 <!-- <ion-item>
                     <ion-icon color="secondary" slot="start" name="shirt"></ion-icon>
                     <ion-label>
@@ -22,11 +24,6 @@
                         <h1>{{ playerInfo.Position }}</h1>
                     </ion-label>
                 </ion-item> -->
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col size="12">
-                <h1 class="ion-text-center">Welcome {{ user.userName }}</h1>
             </ion-col>
         </ion-row>
         <ion-row>
